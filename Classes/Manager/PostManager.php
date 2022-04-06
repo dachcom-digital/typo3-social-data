@@ -24,7 +24,7 @@ class PostManager
             if (!$post instanceof PostInterface) {
                 continue;
             }
-            $existingPost = $this->postRepository->findBySocialId($post->getSocialId());
+            $existingPost = $this->postRepository->findOneBySocialId($post->getSocialId());
             if ($existingPost instanceof PostInterface) {
                 $this->updatePostProperties($existingPost, $post);
                 $this->postRepository->update($existingPost);

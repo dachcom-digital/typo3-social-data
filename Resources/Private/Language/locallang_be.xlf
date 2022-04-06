@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="messages" date="2022-04-04T22:19:31Z" product-name="social-data">
+        <header/>
+        <body>
+            <!-- Plugin -->
+			<trans-unit id="plugin.itemsPerPage" xml:space="preserve">
+				<source>Items per page</source>
+			</trans-unit>
+            <trans-unit id="plugin.limit" xml:space="preserve">
+				<source>Max items displayed</source>
+			</trans-unit>
+
+        </body>
+    </file>
+</xliff>

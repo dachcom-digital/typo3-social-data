@@ -52,19 +52,4 @@ class Wall extends AbstractEntity
         $this->feeds = $feeds;
     }
     
-    /**
-     * @return array
-     */
-    public function getPosts(): array
-    {
-        $posts = [];
-        /** @var Feed $feed */
-        foreach ($this->feeds as $feed) {
-            $posts = array_merge($posts, $feed->getPosts()->toArray());
-        }
-        usort($posts, function(Post $postA, Post $postB) {
-            return $postA->getDatetime() <= $postB->getDatetime();
-        });
-        return $posts;
-    }
 }

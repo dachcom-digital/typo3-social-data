@@ -22,6 +22,9 @@ return [
             'endtime' => 'endtime',
             'fe_group' => 'fe_group',
         ],
+        'typeicon_classes' => [
+            'default' => 'actions-viewmode-photos'
+        ],
         'iconfile' => 'EXT:social_data/Resources/Public/Icons/tx_socialdata_domain_model_wall.svg',
         'searchFields' => 'uid,name',
     ],

@@ -19,6 +19,9 @@ return [
         'enablecolumns' => [
             'disabled' => 'hidden'
         ],
+        'typeicon_classes' => [
+            'default' => 'actions-window-cog'
+        ],
         'iconfile' => 'EXT:social_data/Resources/Public/Icons/tx_socialdata_domain_model_feed.svg',
         'searchFields' => 'uid,name',
     ],

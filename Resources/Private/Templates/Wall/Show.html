@@ -4,11 +4,15 @@
 <f:layout name="Default" />
 
 <f:section name="content">
-    <f:for each="{wall.posts}" as="post">
+    <f:for each="{paginator.paginatedItems}" as="post">
         <div class="social-post social-post-{post.type}">
             <f:render partial="Post" arguments="{post: post}" />
         </div>
     </f:for>
+    <div>
+        <f:render partial="List/Pagination" arguments="{pagination: pagination}" />
+    </div>
 </f:section>
 
 </html>
+
