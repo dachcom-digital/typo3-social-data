@@ -1,0 +1,15 @@
+<T3DataStructure>
+    <ROOT>
+        <type>array</type>
+        <el>
+            <info>
+                <TCEforms>
+                    <description>No connector selected!</description>
+                    <config>
+                        <type>tcaDescription</type>
+                    </config>
+                </TCEforms>
+            </info>
+        </el>
+    </ROOT>
+</T3DataStructure>

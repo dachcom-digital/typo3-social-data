@@ -1,0 +1,35 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    DachcomDigital\SocialData\:
+        resource: '../Classes/*'
+        exclude: '../Classes/{DependencyInjection,Domain/Model,Event}/*'
+
+    DachcomDigital\SocialData\EventListener\ExtbasePersistenceListener:
+        tags:
+            - name: event.listener
+              identifier: 'socialdata_modify_feed_configuration'
+              method: modifyQueryResult
+              event: TYPO3\CMS\Extbase\Event\Persistence\AfterObjectThawedEvent
+
+    DachcomDigital\SocialData\FormEngine\EventListener\FormEngineInitialization:
+        tags:
+            - name: event.listener
+              identifier: 'socialdata_reload_connectorconfig'
+              method: onInitialize
+              event: TYPO3\CMS\Backend\Controller\Event\BeforeFormEnginePageInitializedEvent
+
+    DachcomDigital\SocialData\Command\FetchPostsCommand:
+        autowire: true
+        tags:
+            - name: console.command
+              command: 'social-data:fetch:posts'
+              description: 'Fetch posts'
+              schedulable: true
+
+    # override extbase persistence data mapper
+    TYPO3\CMS\Extbase\Persistence\Generic\Mapper\DataMapper:
+        class: DachcomDigital\SocialData\Extbase\Persistence\DataMapper

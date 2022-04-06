@@ -1,0 +1,20 @@
+<T3DataStructure>
+    <ROOT>
+        <type>array</type>
+        <el>
+            <settings.wall>
+                <TCEforms>
+                    <config>
+                        <type>group</type>
+                        <internal_type>db</internal_type>
+                        <allowed>tx_socialdata_domain_model_wall</allowed>
+                        <maxItems>1</maxItems>
+                        <minItems>0</minItems>
+                        <size>1</size>
+                        <default>0</default>
+                    </config>
+                </TCEforms>
+            </settings.wall>
+        </el>
+    </ROOT>
+</T3DataStructure>

@@ -1,0 +1,10 @@
+plugin.tx_socialdata {
+    view {
+        # cat=plugin.tx_socialdata/file; type=string; label=Path to template root (FE)
+        templateRootPath = EXT:social_data/Resources/Private/Templates/
+        # cat=plugin.tx_socialdata/file; type=string; label=Path to template partials (FE)
+        partialRootPath = EXT:social_data/Resources/Private/Partials/
+        # cat=plugin.tx_socialdata/file; type=string; label=Path to template layouts (FE)
+        layoutRootPath = EXT:social_data/Resources/Private/Layouts/
+    }
+}

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="messages" date="2022-03-31T15:45:22Z" product-name="social-data">
+        <header/>
+        <body>
+            <!-- Feed -->
+            <trans-unit id="tx_socialdata_domain_model_feed" xml:space="preserve">
+				<source>Feed</source>
+			</trans-unit>
+            <trans-unit id="tx_socialdata_domain_model_feed.name" xml:space="preserve">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_socialdata_domain_model_feed.storage_pid" xml:space="preserve">
+				<source>Post Storage</source>
+			</trans-unit>
+            <trans-unit id="tx_socialdata_domain_model_feed.connector" xml:space="preserve">
+				<source>Connector</source>
+			</trans-unit>
+            <trans-unit id="tx_socialdata_domain_model_feed.connector_configuration" xml:space="preserve">
+				<source>Connector configuration</source>
+			</trans-unit>
+			<trans-unit id="tx_socialdata_domain_model_feed.connector_status" xml:space="preserve">
+				<source>Connector status</source>
+			</trans-unit>
+
+            <!-- Post -->
+            <trans-unit id="tx_socialdata_domain_model_post" xml:space="preserve">
+				<source>Post</source>
+			</trans-unit>
+            <trans-unit id="tx_socialdata_domain_model_post.title" xml:space="preserve">
+				<source>Title</source>
+			</trans-unit>
+            <trans-unit id="tx_socialdata_domain_model_post.content" xml:space="preserve">
+				<source>Content</source>
+			</trans-unit>
+			<trans-unit id="tx_socialdata_domain_model_post.url" xml:space="preserve">
+				<source>Url</source>
+			</trans-unit>
+			<trans-unit id="tx_socialdata_domain_model_post.media_url" xml:space="preserve">
+				<source>Media Url</source>
+			</trans-unit>
+			<trans-unit id="tx_socialdata_domain_model_post.poster_url" xml:space="preserve">
+				<source>Poster Url</source>
+			</trans-unit>
+
+            <!-- Wall -->
+            <trans-unit id="tx_socialdata_domain_model_wall" xml:space="preserve">
+				<source>Wall</source>
+			</trans-unit>
+			<trans-unit id="tx_socialdata_domain_model_wall.name" xml:space="preserve">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_socialdata_domain_model_wall.feeds" xml:space="preserve">
+				<source>Feeds</source>
+			</trans-unit>
+        </body>
+    </file>
+</xliff>
