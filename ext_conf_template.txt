@@ -1,0 +1,2 @@
+# cat=Files; type=string; label=assetStoragePath: path to folder where post assets will be stored
+assetStoragePath = 1:/social_data

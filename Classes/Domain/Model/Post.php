@@ -3,7 +3,9 @@ declare(strict_types=1);
 
 namespace DachcomDigital\SocialData\Domain\Model;
 
+use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 class Post extends AbstractEntity implements PostInterface {
     
@@ -16,6 +18,13 @@ class Post extends AbstractEntity implements PostInterface {
     protected string $mediaUrl = '';
     protected string $posterUrl = '';
     protected ?Feed $feed = null;
+    /** @var ObjectStorage<FileReference>  */
+    protected ?ObjectStorage $poster = null;
+    
+    public function __construct()
+    {
+        $this->poster = new ObjectStorage();
+    }
     
     public function getSocialId(): string
     {
@@ -106,4 +115,20 @@ class Post extends AbstractEntity implements PostInterface {
     {
         $this->feed = $feed;
     }
+
+    public function getPoster(): ObjectStorage
+    {
+        return $this->poster;
+    }
+    
+    public function setPoster(?ObjectStorage $poster): void
+    {
+        $this->poster = $poster;
+    }
+    
+    public function addPoster(FileReference $element): void
+    {
+        $this->poster->attach($element);
+    }
+    
 }

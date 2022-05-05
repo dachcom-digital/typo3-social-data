@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace DachcomDigital\SocialData\Domain\Model;
 
 use TYPO3\CMS\Extbase\DomainObject\DomainObjectInterface;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 interface PostInterface extends DomainObjectInterface {
 
@@ -33,5 +34,8 @@ interface PostInterface extends DomainObjectInterface {
     
     public function setFeed(?Feed $feed): void;
     public function getFeed(): ?Feed;
+    
+    public function getPoster(): ObjectStorage;
+    public function setPoster(ObjectStorage $poster): void;
     
 }

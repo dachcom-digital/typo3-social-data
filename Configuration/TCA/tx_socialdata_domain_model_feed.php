@@ -94,12 +94,29 @@ return [
                     'default' => [
                         'andWhere' => 'pages.doktype = 254'
                     ]
+                ],
+                'eval' => 'required'
+            ]
+        ],
+        'persist_media' => [
+            'exclude' => false,
+            'label' => $ll . 'tx_socialdata_domain_model_feed.persist_media',
+            'description' => $ll . 'tx_socialdata_domain_model_feed.persist_media.description',
+            'config' => [
+                'type' => 'check',
+                'renderType' => 'checkboxToggle',
+                'default' => 0,
+                'items' => [
+                    [
+                        0 => '',
+                        1 => '',
+                    ]
                 ]
             ]
         ],
         'connector_identifier' => [
             'exclude' => false,
-            'label' => $ll . 'tx_socialdata_domain_model_feed.connector_identifier',
+            'label' => $ll . 'tx_socialdata_domain_model_feed.connector',
             'onChange' => 'reload',
             'config' => [
                 'type' => 'select',
@@ -154,7 +171,7 @@ return [
         '0' => [
             'showitem' => '
                     name,
-                    storage_pid,
+                    storage_pid, persist_media,
                     connector_identifier,
                     connector_configuration,
                     connector_status,

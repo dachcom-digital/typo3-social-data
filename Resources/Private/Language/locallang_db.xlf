@@ -13,6 +13,12 @@
 			<trans-unit id="tx_socialdata_domain_model_feed.storage_pid" xml:space="preserve">
 				<source>Post Storage</source>
 			</trans-unit>
+			<trans-unit id="tx_socialdata_domain_model_feed.persist_media" xml:space="preserve">
+				<source>Persist media</source>
+			</trans-unit>
+			<trans-unit id="tx_socialdata_domain_model_feed.persist_media.description" xml:space="preserve">
+				<source>If enabled, poster images will be persisted in the default file storage</source>
+			</trans-unit>
             <trans-unit id="tx_socialdata_domain_model_feed.connector" xml:space="preserve">
 				<source>Connector</source>
 			</trans-unit>

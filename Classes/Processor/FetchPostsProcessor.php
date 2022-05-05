@@ -5,6 +5,8 @@ namespace DachcomDigital\SocialData\Processor;
 
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use TYPO3\CMS\Extbase\DomainObject\DomainObjectInterface;
 use TYPO3\CMS\Extbase\Property\PropertyMapper;
 use DachcomDigital\SocialData\Connector\ConnectorDefinitionInterface;
 use DachcomDigital\SocialData\Domain\Model\Feed;
@@ -109,28 +111,30 @@ class FetchPostsProcessor implements LoggerAwareInterface
         
         $posts = $this->processFetchedItems($fetchedItems, $feed);
         
-        $this->postManager->savePosts($posts);
+        $this->postManager->savePosts($posts, $feed);
     }
     
     protected function processFetchedItems(array $items, Feed $feed): array
     {
         $posts = [];
         
+        $resolver = $this->getPostItemResolver();
+        
         foreach ($items as $item) {
-            if (!array_key_exists('id', $item) || empty($item['id'])) {
-                // Todo: better handling
-                throw new \Exception('id must be set for post');
-            }
-            $socialId = $this->generatePostIdentifier($item['id'], $feed);
-            unset($item['id']);
+            // @ToDo: better handling, maybe a dto
+            $resolvedItem = $resolver->resolve($item);
+            
+            $socialId = $this->generatePostIdentifier($resolvedItem['id'], $feed);
+            unset($resolvedItem['id']);
             try {
+                // @ToDo: better handling, maybe custom type converter
                 $post = $this->propertyMapper->convert(
-                    $item,
+                    $resolvedItem,
                     Post::class
                 );
+                $post->setPid($feed->getStoragePid());
                 $post->setSocialId($socialId);
                 $post->setType($feed->getConnectorIdentifier());
-                $post->setPid($feed->getStoragePid());
                 $post->setFeed($feed);
                 $posts[] = $post;
             } catch (\Throwable $e) {
@@ -144,5 +148,20 @@ class FetchPostsProcessor implements LoggerAwareInterface
     protected function generatePostIdentifier(string $id, Feed $feed)
     {
         return implode('-', [$feed->getUid(), $feed->getConnectorIdentifier(), $id]);
+    }
+    
+    protected function getPostItemResolver(): OptionsResolver
+    {
+        $resolver = new OptionsResolver();
+        $resolver->setDefined(['id', 'datetime', 'title', 'content', 'url', 'mediaUrl', 'posterUrl']);
+        $resolver->setRequired('id');
+        $resolver->setAllowedTypes('id', 'string');
+        $resolver->setAllowedTypes('title', 'string');
+        $resolver->setAllowedTypes('content', 'string');
+        $resolver->setAllowedTypes('datetime', ['null', 'DateTime']);
+        $resolver->setAllowedTypes('url', 'string');
+        $resolver->setAllowedTypes('mediaUrl', 'string');
+        $resolver->setAllowedTypes('posterUrl', 'string');
+        return $resolver;
     }
 }

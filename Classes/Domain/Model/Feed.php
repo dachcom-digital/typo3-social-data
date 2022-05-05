@@ -11,6 +11,7 @@ class Feed extends AbstractEntity
 {
     protected string $name = '';
     protected int $storagePid = 0;
+    protected bool $persistMedia = false;
     protected string $connectorIdentifier = '';
     protected array $connectorConfiguration = [];
     protected string $connectorStatus = '';
@@ -52,6 +53,22 @@ class Feed extends AbstractEntity
     public function setStoragePid(int $storagePid): void
     {
         $this->storagePid = $storagePid;
+    }
+    
+    /**
+     * @return bool
+     */
+    public function getPersistMedia(): bool
+    {
+        return $this->persistMedia;
+    }
+    
+    /**
+     * @param bool $persistMedia
+     */
+    public function setPersistMedia(bool $persistMedia): void
+    {
+        $this->persistMedia = $persistMedia;
     }
     
     /**

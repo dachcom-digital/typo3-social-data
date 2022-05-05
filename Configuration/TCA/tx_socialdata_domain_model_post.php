@@ -149,6 +149,33 @@ return [
                 'readOnly' => true
             ]
         ],
+        'poster' => [
+            'exclude' => false,
+            'label' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.media',
+            'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
+                'poster',
+                [
+                    // Use the imageoverlayPalette instead of the basicoverlayPalette
+                    'overrideChildTca' => [
+                        'types' => [
+                            '0' => [
+                                'showitem' => '
+                                    --palette--;;imageoverlayPalette,
+                                    --palette--;;filePalette',
+                            ],
+                            \TYPO3\CMS\Core\Resource\File::FILETYPE_IMAGE => [
+                                'showitem' => '
+                                    --palette--;;imageoverlayPalette,
+                                    --palette--;;filePalette',
+                            ]
+                        ],
+                    ],
+                    'behaviour' => [
+                        'allowLanguageSynchronization' => false,
+                    ]
+                ]
+            )
+        ],
         'feed' => [
             'exclude' => false,
             'label' => $ll . 'tx_socialdata_domain_model_post.feed',
@@ -170,6 +197,7 @@ return [
                 --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.media,
                     media_url,
                     poster_url,
+                    poster,
                 --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access,
                     --palette--;;paletteHidden
                 '

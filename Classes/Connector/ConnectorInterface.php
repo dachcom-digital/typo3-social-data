@@ -9,4 +9,5 @@ interface ConnectorInterface
     
     public function setConfiguration(array $configuration);
     public function fetchItems(): array;
+    
 }

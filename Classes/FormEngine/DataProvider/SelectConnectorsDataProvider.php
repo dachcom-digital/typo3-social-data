@@ -12,7 +12,7 @@ class SelectConnectorsDataProvider
     public function getOptions(&$params)
     {
         foreach ($this->getConnectorRegistry()->getConnectors() as $identifier => $connector) {
-            $params['items'][] = [get_class($connector), $identifier];
+            $params['items'][] = [$identifier, $identifier];
         }
     }
     

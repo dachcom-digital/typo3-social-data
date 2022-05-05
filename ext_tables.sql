@@ -3,6 +3,7 @@
 CREATE TABLE tx_socialdata_domain_model_feed (
     name varchar(255) DEFAULT '' NOT NULL,
     storage_pid int(11) unsigned,
+    persist_media tinyint(1) unsigned,
     connector_identifier varchar(255) DEFAULT '' NOT NULL,
     connector_configuration mediumtext,
     connector_status tinytext,
@@ -21,6 +22,7 @@ CREATE TABLE tx_socialdata_domain_model_post (
     url text,
     media_url text,
     poster_url text,
+    poster int(11) unsigned DEFAULT '0' NOT NULL,
 
     KEY feed (feed),
     KEY social_id (social_id)

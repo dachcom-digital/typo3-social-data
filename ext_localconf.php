@@ -17,7 +17,7 @@ call_user_func(static function() {
     
     $logLevel = \TYPO3\CMS\Core\Core\Environment::getContext()->isDevelopment()
         ? \TYPO3\CMS\Core\Log\LogLevel::DEBUG
-        : \TYPO3\CMS\Core\Log\LogLevel::WARNING;
+        : \TYPO3\CMS\Core\Log\LogLevel::ERROR;
     $GLOBALS['TYPO3_CONF_VARS']['LOG']['DachcomDigital']['SocialData']['writerConfiguration'] = [
         $logLevel => [
             \TYPO3\CMS\Core\Log\Writer\FileWriter::class => [
