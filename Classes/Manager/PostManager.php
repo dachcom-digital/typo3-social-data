@@ -12,7 +12,7 @@ use TYPO3\CMS\Core\Resource\FileReference;
 use TYPO3\CMS\Core\Resource\Folder;
 use TYPO3\CMS\Core\Resource\StorageRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Domain\Model\FileReference as ExtbaseFileReference;
+use DachcomDigital\SocialData\Domain\Model\FileReference as ExtbaseFileReference;
 use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 
 class PostManager
@@ -100,11 +100,15 @@ class PostManager
         $post->getPoster()->removeAll($post->getPoster());
         $extbaseFileReference = count($posterStorage) > 0 ? $posterStorage[0] : new ExtbaseFileReference();
         $fileReference = new FileReference([
+            'uid' => uniqid('NEW_'),
+            'pid' => $post->getPid(),
+            'table_local' => 'sys_file',
             'uid_local' => $file->getUid(),
             'uid_foreign' => uniqid('NEW_'),
-            'uid' => uniqid('NEW_'),
             'crop' => null
         ]);
+        $extbaseFileReference->setPid($post->getPid());
+        $extbaseFileReference->setTableLocal('sys_file');
         $extbaseFileReference->setOriginalResource($fileReference);
         $post->getPoster()->attach($extbaseFileReference);
     }

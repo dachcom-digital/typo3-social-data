@@ -10,8 +10,13 @@
 <f:if condition="{post.content}">
     <div>{post.content}</div>
 </f:if>
-<f:if condition="{post.posterUrl}">
-    <img src="{post.posterUrl}" />
+<f:if condition="{post.poster -> f:count()}">
+    <f:then>
+        <f:image image="{post.poster.0}" />
+    </f:then>
+    <f:else if="{post.posterUrl}">
+        <img src="{post.posterUrl}" />
+    </f:else>
 </f:if>
 
 </html>

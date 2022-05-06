@@ -155,6 +155,8 @@ return [
             'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
                 'poster',
                 [
+                    'readOnly' => true,
+                    'maxitems' => 1,
                     // Use the imageoverlayPalette instead of the basicoverlayPalette
                     'overrideChildTca' => [
                         'types' => [
@@ -169,9 +171,6 @@ return [
                                     --palette--;;filePalette',
                             ]
                         ],
-                    ],
-                    'behaviour' => [
-                        'allowLanguageSynchronization' => false,
                     ]
                 ]
             )
