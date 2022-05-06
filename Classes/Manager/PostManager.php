@@ -89,10 +89,16 @@ class PostManager
         }
         $fileExtension = pathinfo(parse_url($post->getPosterUrl(), PHP_URL_PATH), PATHINFO_EXTENSION);
         $fileName = sprintf('%s.%s', $post->getSocialId(), $fileExtension);
+        $fileContents = file_get_contents($post->getPosterUrl());
+        if (!$fileContents) {
+            return;
+        }
         $file = $this->assetStorageFolder->getFile($fileName) ?? $this->assetStorageFolder->createFile($fileName);
-        $file->setContents(file_get_contents($post->getPosterUrl()));
-        
-        $extbaseFileReference = $post->getPoster()->current() ?? new ExtbaseFileReference();
+        $file->setContents($fileContents);
+    
+        $posterStorage = $post->getPoster()->toArray();
+        $post->getPoster()->removeAll($post->getPoster());
+        $extbaseFileReference = count($posterStorage) > 0 ? $posterStorage[0] : new ExtbaseFileReference();
         $fileReference = new FileReference([
             'uid_local' => $file->getUid(),
             'uid_foreign' => uniqid('NEW_'),
@@ -100,8 +106,6 @@ class PostManager
             'crop' => null
         ]);
         $extbaseFileReference->setOriginalResource($fileReference);
-        
-        $post->getPoster()->removeAll($post->getPoster());
         $post->getPoster()->attach($extbaseFileReference);
     }
     

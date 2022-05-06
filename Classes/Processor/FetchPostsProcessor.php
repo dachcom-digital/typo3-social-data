@@ -85,7 +85,7 @@ class FetchPostsProcessor implements LoggerAwareInterface
         $connectorDefinition = $this->connectorRegistry->get($feed->getConnectorIdentifier());
         
         if (!$connectorDefinition instanceof ConnectorDefinitionInterface) {
-            $this->logger->info(sprintf('no connector definition "%s" found!', $feed->getConnectorIdentifier()));
+            $this->logger->error(sprintf('no connector definition "%s" found!', $feed->getConnectorIdentifier()));
             return;
         }
         
